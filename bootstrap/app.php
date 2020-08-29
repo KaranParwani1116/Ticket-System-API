@@ -40,6 +40,7 @@ $app->add(new BeforeMiddleware());
 //$app->add(new AfterMiddleware());
 
 require_once __DIR__ . '/../app/user.php';
+require_once __DIR__. '/../app/utils.php';
 
 $app->run();
 
