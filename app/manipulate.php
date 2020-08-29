@@ -25,5 +25,30 @@ $app->post('/updatetiming', function($request, $response, $args) {
   $response->getBody()->write($payload);
 
   return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
-})
+});
+
+//route to delete ticket
+$app->delete('/deleteById/[{t_id}]', function($request, $response, $args) {
+    require_once __DIR__. '/../bootstrap/dbconnect.php';
+    
+    $ticketId = $args['t_id'];
+
+    $query = $pdo->prepare("DELETE FROM `tickets` WHERE `t_id` = :t_id");
+    $query->bindParam('t_id', $ticketId);
+    $query->execute();
+
+    $errorData = $query->errorInfo();
+
+    if($errorData[1]) {
+        return checkError($response, $errorData);
+    }
+
+    $output['status'] = 200;
+    $output['message'] = "Tickets Deleted Successfully";
+  
+    $payload = json_encode($output);
+    $response->getBody()->write($payload);
+
+    return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
+});
 ?>
