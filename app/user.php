@@ -16,6 +16,16 @@ $app->post('/booktickets', function($request, $response, $args) {
     $requestData['gender'] = $request->getParsedBody()['gender'];
     $requestData['timing'] = $request->getParsedBody()['timing'];
 
+    if(ticketCount($response, $requestData['timing']) > 2) {
+        $output['status'] = 200;
+        $output['message'] = "Tickets full can't book more.";
+        
+        $payload = json_encode($output);
+        $response->getBody()->write($payload);
+    
+        return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
+    }
+
     $query = $pdo->prepare("INSERT INTO `tickets` (`name`, `age`, `gender`, `number`, `t_id`, `timing`) 
                            VALUES(:name, :age, :gender, :number, :t_id, :timing); ");
     $query->execute($requestData);
@@ -93,5 +103,22 @@ $app->get('/getDetailByDate', function($request, $response, $args) {
 
     return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
 });
+
+function ticketCount($response, $timings) {
+    require __DIR__ .'/../bootstrap/dbconnect.php';
+    
+    $query = $pdo->prepare("SELECT * FROM `tickets` WHERE `timing`=:timings");
+    $query->bindParam(":timings", $timings);
+    $query->execute();
+
+    $errorData = $query->errorInfo();
+
+    if($errorData[1]) {
+        return checkError($response, $errorData);
+    }
+
+    return $query->rowcount();
+    
+}
 
 ?>
