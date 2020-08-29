@@ -41,6 +41,7 @@ $app->add(new BeforeMiddleware());
 
 require_once __DIR__ . '/../app/user.php';
 require_once __DIR__. '/../app/utils.php';
+require_once __DIR__. '/../app/manipulate.php';
 
 $app->run();
 
