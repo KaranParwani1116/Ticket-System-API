@@ -86,6 +86,8 @@ Installation of slim/PSR-7 also recommended to be done via [composer](https://ge
 
 [Sql Events](https://www.mysqltutorial.org/mysql-triggers/working-mysql-scheduled-event/) are tasks that execute according to specified schedule. Therefore, sometimes MySQL events are referred to as scheduled events.</br> MySQL Events are named object which contains one or more SQL statement. They are stored in the database and executed at one or more intervals.
 
+**References** :- https://stackoverflow.com/questions/6622301/can-i-set-a-mysql-event-schedule-using-phpmyadmin
+
 #### ***Event Query***
 
     CREATE EVENT e_store_ts
