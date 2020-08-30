@@ -5,19 +5,19 @@ It consist of a magic feature of deleting tickets automatically which got expire
 
 ## Sections
 
-1. [Installation](#Installation)
-2. [Endpoints](#Endpoints)
-3. [Automatic Expiration and Deletion of tickets](#Automatic-Expiration-and-Deletion-of-tickets)
-4. [Db Connection](#Db-connection)
-5. [Middlewares](#MiddleWares)
-6. [Functions Used](#Functions-Used)
+- [Installation](#Installation)
+- [Endpoints](#Endpoints)
+- [Automatic Expiration and Deletion of tickets](#Automatic-Expiration-and-Deletion-of-tickets)
+- [Db Connection](#Db-connection)
+- [Middlewares](#MiddleWares)
+- [Functions Used](#Functions-Used)
 
 
 ## Installation 
 
-1. [PHP 5.4 or higher](http://www.php.net/downloads.php) is required to use it.
-2. [Slim framework 4.0 or higher](http://www.slimframework.com/docs/v4/start/installation.html) is required to use it.
-3. [Xampp for apache server and my sql](https://www.apachefriends.org/download.html) is required to use it.
+- [PHP 5.4 or higher](http://www.php.net/downloads.php) is required to use it.
+- [Slim framework 4.0 or higher](http://www.slimframework.com/docs/v4/start/installation.html) is required to use it.
+- [Xampp for apache server and my sql](https://www.apachefriends.org/download.html) is required to use it.
 
 Installation of slim is recommended to be done via [composer](https://getcomposer.org/download/) by running:
 
@@ -85,14 +85,18 @@ Installation of slim/PSR-7 also recommended to be done via [composer](https://ge
 
 [Sql Events](https://www.mysqltutorial.org/mysql-triggers/working-mysql-scheduled-event/) are tasks that execute according to specified schedule. Therefore, sometimes MySQL events are referred to as scheduled events.</br> MySQL Events are named object which contains one or more SQL statement. They are stored in the database and executed at one or more intervals.
 
-#### Event Query
+#### ***Event Query***
 
     CREATE EVENT e_store_ts
     ON SCHEDULE
       EVERY 60 SECOND
     DO
+      //timing is a column in table and HOUR is the unit.
       DELETE FROM tickets WHERE TIMESTAMPDIFF(HOUR, timing, NOW()) > 8 
 
+#### ***Event Screenshot***
+
+<img src = "./screenshots/event.png" width="250" height="250">
 
 ## Db connection
 
@@ -170,6 +174,17 @@ db is connected using following code:
           return $query->rowcount();
 
        }
+
+## Screenshots
+
+### Postman Screenshot
+
+<img src = "./screenshots/Postman(1).png" width="250" height="250"> | <img src = "./screenshots/Postman(2).png" width="250" height="250"> |<img src = "./screenshots/Postman(3).png" width="250" height="250">|<img src = "./screenshots/Postman(4).png" width="250" height="250">|<img src = "./screenshots/Postman(5).png" width="250" height="250">
+
+### Db screenshots
+
+<img src = "./screenshots/Db(1).png" width="250" height="250"> | <img src = "./screenshots/Db(2).png" width="250" height="250">
+
 ## Authors
 
 * **Karan Parwani** - *Initial work* - [Repo](https://github.com/KaranParwani1116?tab=repositories)
