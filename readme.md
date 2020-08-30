@@ -194,7 +194,7 @@ db is connected using following code:
         
         //function to validate mobile number   
         return preg_match('/[0-9]{10}/s', $mobile);
-    }
+       }
 
 5. *Throw Error*
 
@@ -225,4 +225,4 @@ If you discover any security related issues, please email karanparwani.parwani10
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/KaranParwani1116/Ticket-System-API/blob/master/LICENSE) file for details
