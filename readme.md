@@ -208,13 +208,13 @@ db is connected using following code:
 
 ### Postman Screenshot
 
-<img src = "./screenshots/Postman(1).png" width="250" height="250"> | <img src = "./screenshots/Postman(2).png" width="250" height="250"> |<img src = "./screenshots/Postman(3).png" width="250" height="250">|<img src = "./screenshots/Postman(4).png" width="250" height="250">|<img src = "./screenshots/Postman(5).png" width="250" height="250">
+<img src = "./screenshots/Postman(1).png" width="250" height="250"> | <img src = "./screenshots/Postman(2).png" width="250" height="250"> |<img src = "./screenshots/Postman(3).png" width="250" height="250">|<img src = "./screenshots/Postman(4).png" width="250" height="250">|<img src = "./screenshots/Postman(5).png" width="250" height="250">|<img src = "./screenshots/Postman(6).png" width="250" height="250">|<img src = "./screenshots/Postman(7).png" width="250" height="250">|<img src = "./screenshots/Postman(8).png" width="250" height="250">
 
 ### Db screenshots
 
-<img src = "./screenshots/Db (1).png" width="250" height="250"> | <img src = "./screenshots/Db(2).png" width="250" height="250">
+<img src = "./screenshots/Db.png" width="250" height="250"> | <img src = "./screenshots/Db-event(1).png" width="250" height="250"> | <img src = "./screenshots/Db(2).png" width="250" height="250">
 
-## Authors
+## Author
 
 * **Karan Parwani** - *Initial work* - [Repo](https://github.com/KaranParwani1116?tab=repositories)
 
