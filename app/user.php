@@ -104,6 +104,7 @@ $app->get('/getDetailByDate', function($request, $response, $args) {
     return $response->withHeader('Content-Type', 'application/json')->withStatus(200);
 });
 
+//function to count the tickets on a particular timing
 function ticketCount($response, $timings) {
     require __DIR__ .'/../bootstrap/dbconnect.php';
     
