@@ -11,6 +11,7 @@ It consist of a magic feature of deleting tickets automatically which got expire
 - [Db Connection](#Db-connection)
 - [Middlewares](#MiddleWares)
 - [Functions Used](#Functions-Used)
+- [Screenshots](#Screenshots)
 
 
 ## Installation 
@@ -183,7 +184,7 @@ db is connected using following code:
 
 ### Db screenshots
 
-<img src = "./screenshots/Db(1).png" width="250" height="250"> | <img src = "./screenshots/Db(2).png" width="250" height="250">
+<img src = "./screenshots/Db (1).png" width="250" height="250"> | <img src = "./screenshots/Db(2).png" width="250" height="250">
 
 ## Authors
 
