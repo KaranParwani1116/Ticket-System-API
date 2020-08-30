@@ -122,7 +122,7 @@ db is connected using following code:
 
  1. *BeforeMiddleWare.php*
 
-      class BeforeMiddleware {
+        class BeforeMiddleware {
     
          public function __invoke($request, $handler): Response
          {
@@ -137,7 +137,7 @@ db is connected using following code:
 
  2. *AfterMiddleware.php*
 
-      class AfterMiddleware {
+        class AfterMiddleware {
     
          public function __invoke($request, $handler): Response
            {
@@ -148,6 +148,8 @@ db is connected using following code:
         }
        
 ## Functions Used
+
+##### *Part of the functions are specified not whole function* 
 
 1. *CheckError*
      
@@ -175,6 +177,30 @@ db is connected using following code:
           return $query->rowcount();
 
        }
+
+3. *Validate Name*
+
+       function validate_name($name) {
+
+          //function to validate name 
+          return preg_match('/^[a-z]*$/i', $name);
+       }
+
+4. *Validate Number*
+
+        function validate_mobile($mobile) {
+        
+        //function to validate mobile number   
+        return preg_match('/[0-9]{10}/s', $mobile);
+    }
+
+5. *Throw Error*
+
+        function throw_Error($response, $message) {
+
+            //function to throw client side error with response code 400
+            return $response->withHeader('Content-Type', 'application/json')->withStatus(400);
+        }
 
 ## Screenshots
 

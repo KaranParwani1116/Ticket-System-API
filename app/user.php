@@ -16,7 +16,28 @@ $app->post('/booktickets', function($request, $response, $args) {
     $requestData['gender'] = $request->getParsedBody()['gender'];
     $requestData['timing'] = $request->getParsedBody()['timing'];
 
-    if(ticketCount($response, $requestData['timing']) > 2) {
+
+    if(!$requestData['number'] and !$requestData['name'] and  !$requestData['age'] and  !$requestData['gender'] and  !$requestData['timing']) {
+        $message = 'Parameter not defined';
+        return throwError($response, $message);
+    }
+
+    if(checkEmpty($requestData['number']) or checkEmpty($requestData['name']) or checkEmpty($requestData['age']) or checkEmpty($requestData['gender']) or checkEmpty($requestData['timing'])) {
+        $message = 'Empty parameter not allowed';
+        return throwError($response, $message);
+    }
+
+    if(!validate_name($requestData['name'])) {
+        $message = 'Name field is not correct';
+        return throwError($response, $message);
+    }
+
+    if(!validate_mobile($requestData['number'])){
+        $message = 'Phone number is not correctly specified';
+        return throwError($response, $message);
+    }
+
+    if(ticketCount($response, $requestData['timing']) > 20) {
         $output['status'] = 200;
         $output['message'] = "Tickets full can't book more.";
         
@@ -53,6 +74,11 @@ $app->get('/getDetailById', function($request, $response, $args) {
 
     $ticketId = $request->getQueryParams()['t_id'];
 
+    if(checkEmpty($ticketId)) {
+        $message = "Ticket id can't be null";
+        return throwError($response, $message);
+    }
+
     $query = $pdo->prepare("SELECT * FROM `tickets` WHERE `t_id`=:ticketId");
     $query->bindParam(":ticketId", $ticketId);
     $query->execute();
@@ -81,6 +107,11 @@ $app->get('/getDetailByDate', function($request, $response, $args) {
     require_once __DIR__. '/../bootstrap/dbconnect.php';
 
     $timings = $request->getQueryParams()['timings'];
+
+    if(checkEmpty($timings)) {
+        $message = "Timings can't be null";
+        return throwError($response, $message);
+    }
 
     $query = $pdo->prepare("SELECT * FROM `tickets` WHERE `timing`=:timings");
     $query->bindParam(":timings", $timings);
@@ -119,7 +150,6 @@ function ticketCount($response, $timings) {
     }
 
     return $query->rowcount();
-    
 }
 
 ?>

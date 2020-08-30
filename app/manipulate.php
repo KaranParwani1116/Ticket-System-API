@@ -9,6 +9,12 @@ $app->post('/updatetiming', function($request, $response, $args) {
   $requestData['t_id'] = $request->getParsedBody()['t_id'];
   $requestData['timing'] = $request->getParsedBody()['timing'];
 
+  //validating data length
+  if(checkEmpty($requestData['t_id']) or checkEmpty($requestData['timing'])) {
+      $message = "Parameter can't be null";
+      return throwError($response, $message);
+  }
+
   $query = $pdo->prepare("UPDATE `tickets` SET `timing` = :timing WHERE `t_id` = :t_id");
   $query->execute($requestData);
 
@@ -32,6 +38,12 @@ $app->delete('/deleteById/[{t_id}]', function($request, $response, $args) {
     require_once __DIR__. '/../bootstrap/dbconnect.php';
     
     $ticketId = $args['t_id'];
+
+    //validating data
+    if(checkEmpty($ticketId)) {
+        $message = "Ticket id can't be null";
+        return throwError($response, $message);
+    }
 
     $query = $pdo->prepare("DELETE FROM `tickets` WHERE `t_id` = :t_id");
     $query->bindParam('t_id', $ticketId);
