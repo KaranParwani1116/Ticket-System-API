@@ -1,5 +1,5 @@
 <?php
-
+//comment
 function checkError($response, $errorData) {
     $output['status'] = $errorData[1];
     $output['message'] = IS_APP_LIVE ? "Query failed" : $errorData[2];
